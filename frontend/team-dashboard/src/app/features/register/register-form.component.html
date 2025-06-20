@@ -1,0 +1,41 @@
+<div class="register-container">
+  <div class="register-box">
+    <h2>Create Account</h2>
+
+    @if (errorMessage) {
+      <div class="error">{{ errorMessage }}</div>
+    }
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" [(ngModel)]="name" placeholder="Your name" />
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" [(ngModel)]="email" placeholder="you@example.com" />
+    </div>
+
+    <div class="field">
+      <label for="telegram">Telegram Tag</label>
+      <input id="telegram" [(ngModel)]="telegram" placeholder="@username" />
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" type="password" [(ngModel)]="password" placeholder="••••••••" />
+    </div>
+
+    <div class="field">
+      <label for="confirm">Confirm Password</label>
+      <input id="confirm" type="password" [(ngModel)]="confirmPassword" placeholder="••••••••" />
+    </div>
+
+    <button class="btn-register" (click)="register()">Register</button>
+
+    <p class="login-text">
+      Already have an account?
+      <a routerLink="/auth/login">Login here</a>
+    </p>
+  </div>
+</div>

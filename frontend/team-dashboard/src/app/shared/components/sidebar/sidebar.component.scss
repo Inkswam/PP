@@ -1,0 +1,203 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: #877c7c; // Відповідає кольору з main-layout
+  border-right: 1px solid #ffffff; // Відповідає border з main-layout
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+
+  /* Приховуємо полосу прокрутки для Webkit-браузерів */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .team-item {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .team-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .team-btn {
+        flex: 1;
+        padding: 12px 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: #f8f9fa;
+        }
+
+        .team-name {
+          font-weight: 600;
+          font-size: 16px;
+          color: #212529;
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        .team-role {
+          font-size: 12px;
+          padding: 2px 8px;
+          border-radius: 12px;
+          background-color: #e9ecef;
+          color: #6c757d;
+          display: inline-block;
+          margin-right: 8px;
+
+          &.owner {
+            background-color: #d4edda;
+            color: #155724;
+          }
+        }
+
+        .participants-count {
+          font-size: 12px;
+          color: #6c757d;
+        }
+      }
+
+      .team-actions {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 8px;
+
+        .expand-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          color: #6c757d;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #e9ecef;
+            color: #495057;
+          }
+
+          &.expanded {
+            transform: rotate(180deg);
+          }
+        }
+
+        .delete-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px 8px;
+          border-radius: 4px;
+          font-size: 18px;
+          color: #dc3545;
+          line-height: 1;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+        }
+      }
+    }
+
+    .participants-list {
+      border-top: 1px solid #e9ecef;
+      background-color: #f8f9fa;
+      padding: 12px 16px;
+
+      .participants-header {
+        font-size: 14px;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+      }
+
+      .participant-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #e9ecef;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        .participant-info {
+          flex: 1;
+
+          .participant-name {
+            font-weight: 500;
+            color: #212529;
+            display: block;
+            font-size: 14px;
+          }
+
+          .participant-email {
+            font-size: 12px;
+            color: #6c757d;
+            display: block;
+          }
+
+          .owner-badge {
+            font-size: 10px;
+            background-color: #ffc107;
+            color: #856404;
+            padding: 2px 6px;
+            border-radius: 8px;
+            margin-top: 4px;
+            display: inline-block;
+          }
+        }
+
+        .remove-participant-btn {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 4px 6px;
+          border-radius: 4px;
+          font-size: 14px;
+          color: #dc3545;
+          line-height: 1;
+          transition: all 0.2s;
+
+          &:hover {
+            background-color: #f8d7da;
+            color: #721c24;
+          }
+        }
+      }
+
+      .no-participants {
+        text-align: center;
+        color: #6c757d;
+        font-style: italic;
+        padding: 16px 0;
+      }
+    }
+  }
+
+  .no-teams {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 32px 16px;
+  }
+}

@@ -1,0 +1,47 @@
+# ========== Angular / Node ==========
+# Папка з модулями npm
+frontend/node_modules/
+
+# Артефакти збірки Angular
+frontend/dist/
+frontend/out-tsc/
+
+# Ключі/налаштування середовища
+frontend/.env
+frontend/*.local
+frontend/.cache/
+
+# Логи
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# ========== .NET / C# ==========
+# Папки збірки і проміжні файли
+backend/bin/
+backend/obj/
+
+# Файли налаштувань користувача Visual Studio/Rider
+backend/*.user
+backend/*.suo
+backend/*.userprefs
+
+# Папка з тимчасовими файлами Visual Studio
+backend/.vs/
+
+# Ключі/секрети
+backend/appsettings*.json
+backend/*.pfx
+
+# ========== Загальні IDE ==========
+# WebStorm / IntelliJ IDEA
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db

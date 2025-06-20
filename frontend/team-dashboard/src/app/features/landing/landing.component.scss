@@ -1,0 +1,65 @@
+﻿.landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f4f8;
+  padding: 20px;
+}
+
+.landing-box {
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.landing-box h1 {
+  margin-bottom: 16px;
+  color: #283e4a;
+  font-size: 28px;
+}
+
+.landing-box p {
+  margin-bottom: 24px;
+  color: #455a64;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+}
+
+.btn-primary {
+  background-color: #1e88e5;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1565c0;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #1e88e5;
+  border: 2px solid #1e88e5;
+}
+
+.btn-secondary:hover {
+  background-color: #e3f2fd;
+}

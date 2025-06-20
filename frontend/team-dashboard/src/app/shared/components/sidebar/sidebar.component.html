@@ -1,0 +1,96 @@
+<!--<nav class="sidebar">-->
+<!--  @for (team of teams; track team.id) {-->
+<!--    <div class="team-item">-->
+<!--      <div-->
+<!--        class="team-btn"-->
+<!--        (click)="onTeamClick(team)">-->
+<!--        <span class="team-name">{{ team.name }}</span>-->
+<!--        <span class="team-role" [class.owner]="isTeamOwner(team)">-->
+<!--          {{ isTeamOwner(team) ? 'Owner' : 'Member' }}-->
+<!--        </span>-->
+<!--      </div>-->
+
+<!--      @if (isTeamOwner(team)) {-->
+<!--        <button-->
+<!--          class="delete-btn"-->
+<!--          (click)="onDeleteTeam($event, team)"-->
+<!--          title="Delete team">-->
+<!--          ×-->
+<!--        </button>-->
+<!--      }-->
+<!--    </div>-->
+<!--  }-->
+<!--</nav>-->
+<nav class="sidebar">
+  @for (team of teams; track team.id) {
+    <div class="team-item">
+      <!-- Основна інформація про команду -->
+      <div class="team-header">
+        <div
+          class="team-btn"
+          (click)="onTeamClick(team)">
+          <span class="team-name">{{ team.name }}</span>
+          <span class="team-role" [class.owner]="isTeamOwner(team)">
+            {{ isTeamOwner(team) ? 'Owner' : 'Member' }}
+          </span>
+          <span class="participants-count">
+            ({{ getTeamParticipants(team.id!).length }} members)
+          </span>
+        </div>
+
+        <!-- Кнопки управління -->
+        <div class="team-actions">
+          <button
+            class="expand-btn"
+            (click)="toggleTeamExpansion($event, team.id!)"
+            [class.expanded]="isTeamExpanded(team.id!)"
+            title="Show/hide team members">
+            {{ isTeamExpanded(team.id!) ? '▲' : '▼' }}
+          </button>
+
+          @if (isTeamOwner(team)) {
+            <button
+              class="delete-btn"
+              (click)="onDeleteTeam($event, team)"
+              title="Delete team">
+              ×
+            </button>
+          }
+        </div>
+      </div>
+
+      <!-- Список учасників команди (показується тільки коли розгорнуто) -->
+      @if (isTeamExpanded(team.id!)) {
+        <div class="participants-list">
+          <div class="participants-header">Team Members:</div>
+
+          @for (participant of getTeamParticipants(team.id!); track participant.id) {
+            <div class="participant-item">
+              <div class="participant-info">
+                <span class="participant-name">{{ participant.username }}</span>
+                <span class="participant-email">{{ participant.email }}</span>
+                @if (participant.id === team.ownerId) {
+                  <span class="owner-badge">Owner</span>
+                }
+              </div>
+
+              <!-- Тільки власник може видаляти учасників (але не себе) -->
+              @if (isTeamOwner(team) && participant.id !== team.ownerId) {
+                <button
+                  class="remove-participant-btn"
+                  (click)="removeParticipant($event, team.id!, participant.id!)"
+                  title="Remove from team">
+                  ×
+                </button>
+              }
+            </div>
+          } @empty {
+            <div class="no-participants">No participants found</div>
+          }
+        </div>
+      }
+    </div>
+  } @empty {
+    <div class="no-teams">No teams found</div>
+  }
+</nav>

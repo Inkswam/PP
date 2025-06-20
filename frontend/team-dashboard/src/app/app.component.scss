@@ -1,0 +1,19 @@
+.layout {
+  display: flex;
+  height: calc(100vh - 60px); // topbar висота
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+// app.component.scss
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f5; // або ваш фоновий колір
+}

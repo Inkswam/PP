@@ -1,0 +1,13 @@
+<header class="topbar">
+  <button class="create-btn" (click)="toggleCreateModal()">Create Team</button>
+  <button [routerLink]="['/user']" class="user-button">
+    {{ username || 'user' }}
+  </button>
+</header>
+
+@if (showCreateModal) {
+  <app-create-team-modal
+    (close)="onModalClose()"
+    (create)="onCreateTeam($event)"
+  ></app-create-team-modal>
+}

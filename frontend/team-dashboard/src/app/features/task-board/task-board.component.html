@@ -1,0 +1,95 @@
+<!-- src/app/features/task-board/task-board.component.html -->
+<div class="task-board-container">
+  <div class="board-header">
+    <div class="header-left">
+      <button class="dashboard-btn" routerLink="/dashboard">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>
+        Dashboard
+      </button>
+
+    </div>
+    <button class="create-task-btn" (click)="openCreateModal()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg>
+      Create Task
+    </button>
+  </div>
+
+  <div class="board">
+    <div class="column awaiting">
+      <div class="column-header">
+        <h3>Awaiting</h3>
+        <div class="task-count">{{ awaiting.length }}</div>
+      </div>
+      <div class="cards-container">
+        @for (t of awaiting; track t.id) {
+          <div class="card">
+            <div class="card-content">
+              <div class="card-title">{{ t.title }}</div>
+            </div>
+          </div>
+        }
+        @if (awaiting.length === 0) {
+          <div class="empty-state">
+            <p>No tasks awaiting</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="column in-progress">
+      <div class="column-header">
+        <h3>In Progress</h3>
+        <div class="task-count">{{ inProgress.length }}</div>
+      </div>
+      <div class="cards-container">
+        @for (t of inProgress; track t.id) {
+          <div class="card">
+            <div class="card-content">
+              <div class="card-title">{{ t.title }}</div>
+            </div>
+          </div>
+        }
+        @if (inProgress.length === 0) {
+          <div class="empty-state">
+            <p>No tasks in progress</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="column completed">
+      <div class="column-header">
+        <h3>Completed</h3>
+        <div class="task-count">{{ completed.length }}</div>
+      </div>
+      <div class="cards-container">
+        @for (t of completed; track t.id) {
+          <div class="card">
+            <div class="card-content">
+              <div class="card-title">{{ t.title }}</div>
+            </div>
+          </div>
+        }
+        @if (completed.length === 0) {
+          <div class="empty-state">
+            <p>No completed tasks</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+@if (showCreateModal) {
+  <app-create-task-modal
+    [teamId]="teamId"
+    (close)="onModalClose()"
+    (created)="onTaskCreated($event)">
+  </app-create-task-modal>
+}

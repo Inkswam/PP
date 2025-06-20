@@ -1,0 +1,53 @@
+<app-user-topbar></app-user-topbar>
+
+<div class="user-layout">
+  <app-user-sidebar></app-user-sidebar>
+
+  <main class="user-main-content">
+
+@if (user) {
+  <div class="container">
+    <div class="profile-box">
+      <h2>User Profile</h2>
+
+      <div class="field">
+        <label>Username:</label>
+        @if (!editing) {
+          <span>{{ user.username }}</span>
+        } @else {
+          <input [(ngModel)]="user.username" />
+        }
+      </div>
+
+      <div class="field">
+        <label>Email:</label>
+        @if (!editing) {
+          <span>{{ user.email }}</span>
+        } @else {
+          <input [(ngModel)]="user.email" />
+        }
+      </div>
+
+      <div class="field">
+        <label>Telegram:</label>
+        @if (!editing) {
+          <span>{{ user.telegram }}</span>
+        } @else {
+          <input [(ngModel)]="user.telegram" />
+        }
+      </div>
+
+      <button (click)="toggleEdit()">
+        {{ editing ? 'Зберегти' : 'Редагувати' }}
+      </button>
+
+      @if (editing) {
+        <button class="cancel-btn" (click)="cancelEdit()">Відмінити</button>
+      }
+    </div>
+  </div>
+} @else {
+  <div>Loading user data...</div>
+}
+  </main>
+</div>

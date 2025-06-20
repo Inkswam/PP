@@ -1,0 +1,98 @@
+/* Центруємо контейнер */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 95vh;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+/* Картка реєстрації */
+.register-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 24px;
+    color: #1f2a36;
+    font-size: 24px;
+  }
+}
+
+/* Поля форми */
+.field {
+  margin-bottom: 20px;
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #455a64;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1.5px solid #cfd8dc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      border-color: #1e88e5;
+      outline: none;
+    }
+  }
+}
+
+/* Повідомлення про помилку */
+.error {
+  margin-bottom: 16px;
+  color: #d32f2f;
+  font-weight: 600;
+}
+
+/* Кнопка реєстрації */
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background-color: #1e88e5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  margin-bottom: 16px;
+
+  &:hover {
+    background-color: #1565c0;
+  }
+}
+
+/* Текст з посиланням на логін */
+.login-text {
+  font-size: 14px;
+  color: #607d8b;
+
+  a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

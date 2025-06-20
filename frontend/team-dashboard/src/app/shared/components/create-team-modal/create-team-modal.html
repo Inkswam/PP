@@ -1,0 +1,91 @@
+<!-- src/app/shared/components/create-team-modal/create-team-modal.component.html -->
+<div class="modal-overlay" (click)="onClose()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Create New Team</h2>
+      <button class="close-btn" (click)="onClose()" type="button">
+        <span>&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form (ngSubmit)="onCreate()" #teamForm="ngForm">
+        <div class="form-group">
+          <label for="teamName">Team Name</label>
+          <input
+            type="text"
+            id="teamName"
+            [(ngModel)]="teamName"
+            name="teamName"
+            class="form-control"
+            placeholder="Enter team name"
+            required
+            #teamNameInput="ngModel">
+          <div class="error-message" *ngIf="teamNameInput.invalid && teamNameInput.touched">
+            Team name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Select Team Members</label>
+          <div class="loading" *ngIf="isLoading">
+            Loading users...
+          </div>
+
+          <div class="users-list" *ngIf="!isLoading">
+            <div
+              class="user-item"
+              *ngFor="let user of availableUsers"
+              [class.selected]="isUserSelected(user)"
+              (click)="toggleUser(user)">
+              <div class="user-info">
+                <span class="user-name">{{ user.username }}</span>
+                <span class="user-email" *ngIf="user.email">{{ user.email }}</span>
+              </div>
+              <div class="checkbox">
+                <input
+                  type="checkbox"
+                  [checked]="isUserSelected(user)"
+                  (change)="toggleUser(user)"
+                  [id]="'user-' + user.id">
+                <label [for]="'user-' + user.id"></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="selected-users" *ngIf="selectedUsers.length > 0">
+            <h4>Selected Members ({{ selectedUsers.length }})</h4>
+            <div class="selected-users-list">
+              <span
+                class="selected-user-tag"
+                *ngFor="let user of selectedUsers">
+                {{ user.username }}
+                <button
+                  type="button"
+                  class="remove-user"
+                  (click)="toggleUser(user)">
+                  &times;
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-cancel"
+            (click)="onClose()">
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!teamName.trim() || selectedUsers.length === 0">
+            Create Team
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+/* Змінні */
+$topbar-height: 60px;
+$sidebar-width: 280px; /* Збільшено з 200px до 280px */
+
+/* Прибираємо глобальні відступи і прокрутку body/html */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ============================================ */
+/*           ТОПБАР (FIXED)                     */
+/* ============================================ */
+app-topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: $topbar-height;
+  background-color: #283e4a;
+  color: #fff;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* ============================================ */
+/*           САЙДБАР (FIXED)                    */
+/* ============================================ */
+app-sidebar {
+  position: fixed;
+  top: $topbar-height;    /* прямо під топбаром */
+  left: 0;
+  bottom: 0;
+  width: $sidebar-width;
+  z-index: 900;
+
+  // Прибираємо всі стилі, які можуть конфліктувати з внутрішніми стилями компонента
+  // Залишаємо тільки позиціонування та розміри
+}
+
+/* ============================================ */
+/*     ОСНОВНОЙ КОНТЕНТ                       */
+/* ============================================ */
+.layout {
+  display: flex;
+  margin-top: $topbar-height;
+  height: calc(100vh - #{$topbar-height});
+  overflow: hidden; /* Глобальної прокрутки немає */
+}
+
+.main-content {
+  flex: 1;
+  margin-left: $sidebar-width;
+  padding: 20px;
+  box-sizing: border-box;
+
+  /* Власна прокрутка для контенту */
+  overflow-y: auto;
+  height: 100%;
+
+  background-color: #f7f9fc;
+}
+
+/* ============================================ */
+/*  ВЛАШТУВАННЯ КОНТЕЙНЕРА ПІД ROUTER-OUTLET     */
+/* ============================================ */
+.content-container {
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
