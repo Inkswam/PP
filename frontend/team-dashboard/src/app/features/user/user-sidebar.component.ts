@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   template: `
     <aside class="user-sidebar">
       <button (click)="logout()" class="logout-btn">
-        Вийти
+        Logout
       </button>
     </aside>
   `,

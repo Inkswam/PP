@@ -38,11 +38,11 @@
       </div>
 
       <button (click)="toggleEdit()">
-        {{ editing ? 'Зберегти' : 'Редагувати' }}
+        {{ editing ? 'Save' : 'Edit' }}
       </button>
 
       @if (editing) {
-        <button class="cancel-btn" (click)="cancelEdit()">Відмінити</button>
+        <button class="cancel-btn" (click)="cancelEdit()">Disregard</button>
       }
     </div>
   </div>
