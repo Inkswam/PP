@@ -1,4 +1,3 @@
-<!-- src/app/features/task-board/task-board.component.html -->
 <div class="task-board-container">
   <div class="board-header">
     <div class="header-left">
@@ -9,7 +8,6 @@
         </svg>
         Dashboard
       </button>
-
     </div>
     <button class="create-task-btn" (click)="openCreateModal()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -26,19 +24,20 @@
         <h3>Awaiting</h3>
         <div class="task-count">{{ awaiting.length }}</div>
       </div>
-      <div class="cards-container">
-        @for (t of awaiting; track t.id) {
-          <div class="card">
-            <div class="card-content">
-              <div class="card-title">{{ t.title }}</div>
-            </div>
+      <div class="cards-container"
+           cdkDropList
+           id="awaiting"
+           [cdkDropListData]="awaiting"
+           [cdkDropListConnectedTo]="['in-progress', 'completed']"
+           (cdkDropListDropped)="drop($event)">
+        <div class="card" *ngFor="let t of awaiting" cdkDrag>
+          <div class="card-content">
+            <div class="card-title">{{ t.title }}</div>
           </div>
-        }
-        @if (awaiting.length === 0) {
-          <div class="empty-state">
-            <p>No tasks awaiting</p>
-          </div>
-        }
+        </div>
+        <div class="empty-state" *ngIf="awaiting.length === 0">
+          <p>No tasks awaiting</p>
+        </div>
       </div>
     </div>
 
@@ -47,19 +46,20 @@
         <h3>In Progress</h3>
         <div class="task-count">{{ inProgress.length }}</div>
       </div>
-      <div class="cards-container">
-        @for (t of inProgress; track t.id) {
-          <div class="card">
-            <div class="card-content">
-              <div class="card-title">{{ t.title }}</div>
-            </div>
+      <div class="cards-container"
+           cdkDropList
+           id="in-progress"
+           [cdkDropListData]="inProgress"
+           [cdkDropListConnectedTo]="['awaiting', 'completed']"
+           (cdkDropListDropped)="drop($event)">
+        <div class="card" *ngFor="let t of inProgress" cdkDrag>
+          <div class="card-content">
+            <div class="card-title">{{ t.title }}</div>
           </div>
-        }
-        @if (inProgress.length === 0) {
-          <div class="empty-state">
-            <p>No tasks in progress</p>
-          </div>
-        }
+        </div>
+        <div class="empty-state" *ngIf="inProgress.length === 0">
+          <p>No tasks in progress</p>
+        </div>
       </div>
     </div>
 
@@ -68,19 +68,20 @@
         <h3>Completed</h3>
         <div class="task-count">{{ completed.length }}</div>
       </div>
-      <div class="cards-container">
-        @for (t of completed; track t.id) {
-          <div class="card">
-            <div class="card-content">
-              <div class="card-title">{{ t.title }}</div>
-            </div>
+      <div class="cards-container"
+           cdkDropList
+           id="completed"
+           [cdkDropListData]="completed"
+           [cdkDropListConnectedTo]="['awaiting', 'in-progress']"
+           (cdkDropListDropped)="drop($event)">
+        <div class="card" *ngFor="let t of completed" cdkDrag>
+          <div class="card-content">
+            <div class="card-title">{{ t.title }}</div>
           </div>
-        }
-        @if (completed.length === 0) {
-          <div class="empty-state">
-            <p>No completed tasks</p>
-          </div>
-        }
+        </div>
+        <div class="empty-state" *ngIf="completed.length === 0">
+          <p>No completed tasks</p>
+        </div>
       </div>
     </div>
   </div>

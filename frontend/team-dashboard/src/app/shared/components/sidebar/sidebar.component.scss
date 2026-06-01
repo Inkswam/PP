@@ -9,24 +9,22 @@
   flex-direction: column;
   gap: 8px;
   padding: 16px;
-  background-color: #877c7c; // Відповідає кольору з main-layout
-  border-right: 1px solid #ffffff; // Відповідає border з main-layout
+  background-color: #1e2d3d;
+  border-right: 1px solid #2d3f50;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
   overflow-y: auto;
 
-  /* Приховуємо полосу прокрутки для Webkit-браузерів */
   &::-webkit-scrollbar {
     display: none;
   }
 
   .team-item {
-    border: 1px solid #dee2e6;
+    border: 1px solid #2d3f50;
     border-radius: 8px;
-    background-color: white;
+    background-color: #152234;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
     .team-header {
       display: flex;
@@ -38,15 +36,18 @@
         padding: 12px 16px;
         cursor: pointer;
         transition: background-color 0.2s;
+        background: none;
+        border: none;
+        text-align: left;
 
         &:hover {
-          background-color: #f8f9fa;
+          background-color: #1e2d3d;
         }
 
         .team-name {
           font-weight: 600;
           font-size: 16px;
-          color: #212529;
+          color: #ffffff;
           display: block;
           margin-bottom: 4px;
         }
@@ -55,20 +56,20 @@
           font-size: 12px;
           padding: 2px 8px;
           border-radius: 12px;
-          background-color: #e9ecef;
-          color: #6c757d;
+          background-color: #2d3f50;
+          color: #8899aa;
           display: inline-block;
           margin-right: 8px;
 
           &.owner {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #1a3a2a;
+            color: #4caf50;
           }
         }
 
         .participants-count {
           font-size: 12px;
-          color: #6c757d;
+          color: #8899aa;
         }
       }
 
@@ -85,12 +86,12 @@
           padding: 8px;
           border-radius: 4px;
           font-size: 12px;
-          color: #6c757d;
+          color: #8899aa;
           transition: all 0.2s;
 
           &:hover {
-            background-color: #e9ecef;
-            color: #495057;
+            background-color: #2d3f50;
+            color: #ffffff;
           }
 
           &.expanded {
@@ -105,27 +106,27 @@
           padding: 4px 8px;
           border-radius: 4px;
           font-size: 18px;
-          color: #dc3545;
+          color: #ff6b6b;
           line-height: 1;
           transition: all 0.2s;
 
           &:hover {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: #3a1a1a;
+            color: #ff4444;
           }
         }
       }
     }
 
     .participants-list {
-      border-top: 1px solid #e9ecef;
-      background-color: #f8f9fa;
+      border-top: 1px solid #2d3f50;
+      background-color: #1a2738;
       padding: 12px 16px;
 
       .participants-header {
         font-size: 14px;
         font-weight: 600;
-        color: #495057;
+        color: #8899aa;
         margin-bottom: 8px;
       }
 
@@ -134,7 +135,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 0;
-        border-bottom: 1px solid #e9ecef;
+        border-bottom: 1px solid #2d3f50;
 
         &:last-child {
           border-bottom: none;
@@ -145,21 +146,21 @@
 
           .participant-name {
             font-weight: 500;
-            color: #212529;
+            color: #ffffff;
             display: block;
             font-size: 14px;
           }
 
           .participant-email {
             font-size: 12px;
-            color: #6c757d;
+            color: #8899aa;
             display: block;
           }
 
           .owner-badge {
             font-size: 10px;
-            background-color: #ffc107;
-            color: #856404;
+            background-color: #856404;
+            color: #ffc107;
             padding: 2px 6px;
             border-radius: 8px;
             margin-top: 4px;
@@ -174,20 +175,19 @@
           padding: 4px 6px;
           border-radius: 4px;
           font-size: 14px;
-          color: #dc3545;
-          line-height: 1;
+          color: #ff6b6b;
           transition: all 0.2s;
 
           &:hover {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: #3a1a1a;
+            color: #ff4444;
           }
         }
       }
 
       .no-participants {
         text-align: center;
-        color: #6c757d;
+        color: #8899aa;
         font-style: italic;
         padding: 16px 0;
       }
@@ -196,7 +196,7 @@
 
   .no-teams {
     text-align: center;
-    color: #6c757d;
+    color: #8899aa;
     font-style: italic;
     padding: 32px 16px;
   }

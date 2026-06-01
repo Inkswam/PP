@@ -17,7 +17,9 @@ namespace Backend.Services
         {
             return _ctx.Tasks
                 .Include(t => t.Team)
-                .Where(t => t.TeamId == teamId && t.Team.OwnerId == ownerId)
+                .Where(t => t.TeamId == teamId && 
+                            (t.Team.OwnerId == ownerId || 
+                             t.Team.Participants.Contains(ownerId.ToString())))
                 .ToList();
         }
 
@@ -26,6 +28,15 @@ namespace Backend.Services
             _ctx.Tasks.Add(newTask);
             _ctx.SaveChanges();
             return newTask;
+        }
+        
+        public TaskModel? UpdateTaskStatus(int id, string status)
+        {
+            var task = _ctx.Tasks.FirstOrDefault(t => t.Id == id);
+            if (task == null) return null;
+            task.Status = status;
+            _ctx.SaveChanges();
+            return task;
         }
     }
 }

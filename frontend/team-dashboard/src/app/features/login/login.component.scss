@@ -1,19 +1,17 @@
-/* Центруємо контейнер по всьому екрану */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 95vh;
-  background-color: #f0f4f8;
+  min-height: 100vh;
+  background: #1a2332;
   padding: 20px;
 }
 
-/* Білий картрідж посередині */
 .login-box {
-  background: #ffffff;
+  background: #1e2d3d;
   padding: 40px 30px;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 360px;
   box-sizing: border-box;
@@ -21,12 +19,11 @@
 
   h2 {
     margin-bottom: 24px;
-    color: #1f2a36;
+    color: #ffffff;
     font-size: 24px;
   }
 }
 
-/* Поля форми */
 .field {
   margin-bottom: 20px;
   text-align: left;
@@ -35,58 +32,61 @@
     display: block;
     margin-bottom: 6px;
     font-weight: 600;
-    color: #455a64;
+    color: #8899aa;
   }
 
   input {
     width: 100%;
     padding: 10px 12px;
     font-size: 15px;
-    border: 1.5px solid #cfd8dc;
+    border: 1.5px solid #2d3f50;
     border-radius: 6px;
     box-sizing: border-box;
+    background: #152234;
+    color: #ffffff;
     transition: border-color 0.2s ease;
 
+    &::placeholder {
+      color: #4a5f72;
+    }
+
     &:focus {
-      border-color: #1e88e5;
+      border-color: #6c63ff;
       outline: none;
     }
   }
 }
 
-/* Повідомлення про помилку */
 .error {
   margin-bottom: 16px;
-  color: #d32f2f;
+  color: #ff6b6b;
   font-weight: 600;
 }
 
-/* Кнопка логіну */
 .btn-login {
   width: 100%;
   padding: 12px;
-  background-color: #1e88e5;
+  background: linear-gradient(135deg, #6c63ff, #4facfe);
   border: none;
   border-radius: 8px;
   color: white;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.25s ease;
+  transition: opacity 0.25s ease;
   margin-bottom: 16px;
 
   &:hover {
-    background-color: #1565c0;
+    opacity: 0.9;
   }
 }
 
-/* Текст для реєстрації */
 .register-text {
   font-size: 14px;
-  color: #607d8b;
+  color: #8899aa;
 
   a {
-    color: #1e88e5;
+    color: #6c63ff;
     text-decoration: none;
     font-weight: 600;
     margin-left: 4px;

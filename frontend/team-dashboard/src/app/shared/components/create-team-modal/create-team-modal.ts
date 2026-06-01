@@ -64,7 +64,7 @@ export class CreateTeamModalComponent implements OnInit {
     }
 
     // Перетворюємо вибраних користувачів в список імен
-    const participants = this.selectedUsers.map(user => user.username);
+    const participants = this.selectedUsers.map(user => user.id!.toString());
 
     const teamData: CreateTeamRequest = {
       name: this.teamName.trim(),

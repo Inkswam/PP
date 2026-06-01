@@ -8,4 +8,6 @@ public interface ITaskService
 {
     IEnumerable<TaskModel> GetTasksForTeam(int teamId, int ownerId);
     TaskModel CreateTask(TaskModel newTask);
+    
+    TaskModel? UpdateTaskStatus(int id, string status);
 }

@@ -1,15 +1,15 @@
-// src/app/features/task-board/task-board.component.ts
-import { Component, OnInit }           from '@angular/core';
-import { CommonModule }                from '@angular/common';
-import { CreateTaskModalComponent }    from 'src/app/features/task-board/task-modal/create-task-modal/create-task-modal.component';
-import { TaskService }                 from 'src/app/core/services/taskService';
-import { ActivatedRoute, RouterModule }from '@angular/router';
-import { Task }                        from 'src/app/core/models/TaskModel';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CreateTaskModalComponent } from 'src/app/features/task-board/task-modal/create-task-modal/create-task-modal.component';
+import { TaskService } from 'src/app/core/services/taskService';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Task } from 'src/app/core/models/TaskModel';
+import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-task-board',
   standalone: true,
-  imports: [CommonModule, CreateTaskModalComponent, RouterModule],
+  imports: [CommonModule, CreateTaskModalComponent, RouterModule, DragDropModule],
   templateUrl: './task-board.component.html',
   styleUrls: ['./task-board.component.scss']
 })
@@ -38,13 +38,29 @@ export class TaskBoardComponent implements OnInit {
     });
   }
 
+  drop(event: CdkDragDrop<Task[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+
+      const task = event.container.data[event.currentIndex];
+      const newStatus = event.container.id as 'awaiting' | 'in-progress' | 'completed';
+      task.status = newStatus;
+
+      this.svc.updateTaskStatus(task.id!, newStatus).subscribe();
+    }
+  }
+
   openCreateModal() { this.showCreateModal = true; }
-  onModalClose()   { this.showCreateModal = false; }
+  onModalClose()    { this.showCreateModal = false; }
   onTaskCreated(t: Task) {
-    // push into right array
-    if (t.status === 'awaiting')   this.awaiting.push(t);
-    if (t.status === 'in-progress') this.inProgress.push(t);
-    if (t.status === 'completed')  this.completed.push(t);
+    this.awaiting.push(t);
     this.showCreateModal = false;
   }
 }

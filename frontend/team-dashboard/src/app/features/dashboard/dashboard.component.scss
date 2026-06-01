@@ -1,6 +1,15 @@
 .dashboard-container {
   padding: 20px;
-  background: #3d54d6;
+  background: #1e2d3d;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #ffffff;
+
+  h1 {
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #8899aa;
+  }
 }

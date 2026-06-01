@@ -22,4 +22,14 @@ export class TaskService {
       withCredentials: true
     });
   }
+
+  updateTaskStatus(id: number, status: string): Observable<Task> {
+    return this.http.patch<Task>(`${this.base}/tasks/${id}`, { status }, {
+      withCredentials: true
+    });
+  }
+
 }
+
+
+

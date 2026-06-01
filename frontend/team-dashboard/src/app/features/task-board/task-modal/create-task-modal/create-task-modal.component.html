@@ -1,4 +1,3 @@
-<!-- create-task-modal.component.html -->
 <div class="modal-backdrop" (click)="close.emit()">
   <div class="modal" (click)="$event.stopPropagation()">
     <h2>✨ Create New Task</h2>
@@ -12,16 +11,6 @@
           placeholder="Enter task title..."
           autocomplete="off" />
       </label>
-
-      <label>
-        Status
-        <select [(ngModel)]="status" name="status">
-          <option value="awaiting">⏳ Awaiting</option>
-          <option value="in-progress">🔄 In Progress</option>
-          <option value="completed">✅ Completed</option>
-        </select>
-      </label>
-
       <div class="form-actions">
         <button type="button" (click)="close.emit()">Cancel</button>
         <button type="submit" [disabled]="f.invalid">Create Task</button>

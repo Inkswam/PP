@@ -1,4 +1,3 @@
-// src/app/features/task-board/task-modal/create-task-modal.component.ts
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule }  from '@angular/forms';
@@ -19,7 +18,6 @@ export class CreateTaskModalComponent {
   @Output() created = new EventEmitter<Task>();
 
   title: string = '';
-  status: 'awaiting' | 'in-progress' | 'completed' = 'awaiting';
 
   constructor(private svc: TaskService) {}
 
@@ -27,10 +25,11 @@ export class CreateTaskModalComponent {
     if (!this.title.trim()) return;
     const dto: CreateTaskDto = {
       title:  this.title.trim(),
-      status: this.status,
+      status: 'awaiting',
       teamId: this.teamId
     };
     this.svc.createTask(dto).subscribe(t => {
+      console.log('Created task:', t);
       this.created.emit(t);
     });
   }

@@ -1,8 +1,6 @@
-/* Змінні */
 $topbar-height: 60px;
-$sidebar-width: 280px; /* Збільшено з 200px до 280px */
+$sidebar-width: 280px;
 
-/* Прибираємо глобальні відступи і прокрутку body/html */
 html, body {
   margin: 0;
   padding: 0;
@@ -10,43 +8,31 @@ html, body {
   overflow: hidden;
 }
 
-/* ============================================ */
-/*           ТОПБАР (FIXED)                     */
-/* ============================================ */
 app-topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: $topbar-height;
-  background-color: #283e4a;
+  background-color: #1e2d3d;
   color: #fff;
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 1000;
 }
 
-/* ============================================ */
-/*           САЙДБАР (FIXED)                    */
-/* ============================================ */
 app-sidebar {
   position: fixed;
-  top: $topbar-height;    /* прямо під топбаром */
+  top: $topbar-height;
   left: 0;
   bottom: 0;
   width: $sidebar-width;
   z-index: 900;
-
-  // Прибираємо всі стилі, які можуть конфліктувати з внутрішніми стилями компонента
-  // Залишаємо тільки позиціонування та розміри
 }
 
-/* ============================================ */
-/*     ОСНОВНОЙ КОНТЕНТ                       */
-/* ============================================ */
 .layout {
   display: flex;
   margin-top: $topbar-height;
   height: calc(100vh - #{$topbar-height});
-  overflow: hidden; /* Глобальної прокрутки немає */
+  overflow: hidden;
 }
 
 .main-content {
@@ -54,22 +40,16 @@ app-sidebar {
   margin-left: $sidebar-width;
   padding: 20px;
   box-sizing: border-box;
-
-  /* Власна прокрутка для контенту */
   overflow-y: auto;
   height: 100%;
-
-  background-color: #f7f9fc;
+  background-color: #152234;
 }
 
-/* ============================================ */
-/*  ВЛАШТУВАННЯ КОНТЕЙНЕРА ПІД ROUTER-OUTLET     */
-/* ============================================ */
 .content-container {
   max-width: 100%;
   margin: 0 auto;
-  background: white;
+  background: #1e2d3d;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

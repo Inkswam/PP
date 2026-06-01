@@ -6,47 +6,47 @@ import { Router } from '@angular/router';
   standalone: true,
   template: `
     <header class="user-topbar">
-      <h1>User Topbar</h1>
+      <span class="app-title">Orbitae</span>
       <button class="btn-dashboard" (click)="goToDashboard()">Dashboard</button>
     </header>
   `,
   styles: [`
     .user-topbar {
-      height: 60px !important;
-      background-color: #000000 !important;
-      color: white !important;
-      display: flex !important;
-      align-items: center !important;
-      padding: 0 20px !important;
-      font-size: 20px !important;
-      justify-content: space-between !important;
-      width: 100% !important;
-      box-sizing: border-box !important;
+      height: 60px;
+      background-color: #1e2d3d;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+      border-bottom: 1px solid #2d3f50;
     }
-
-    .user-topbar h1 {
-      margin: 0 !important;
+    .app-title {
+      font-weight: 700;
+      font-size: 20px;
+      color: #ffffff;
     }
-
-    .user-topbar .btn-dashboard {
-      background-color: #007bff !important;
-      border: none !important;
-      color: white !important;
-      padding: 6px 12px !important;
-      border-radius: 4px !important;
-      cursor: pointer !important;
-      font-size: 16px !important;
+    .btn-dashboard {
+      background: transparent;
+      border: 2px solid #4a5f72;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
     }
-
-    .user-topbar .btn-dashboard:hover {
-      background-color: #0056b3 !important;
+    .btn-dashboard:hover {
+      border-color: #6c63ff;
+      color: #6c63ff;
     }
-
   `]
 })
 export class UserTopbarComponent {
   constructor(private router: Router) {}
-
   goToDashboard() {
     this.router.navigate(['/dashboard']);
   }

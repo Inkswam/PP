@@ -14,30 +14,29 @@ import { Router } from '@angular/router';
   styles: [`
     .user-sidebar {
       width: 220px;
-      background-color: #eee;
+      background-color: #1e2d3d;
       height: calc(100vh - 60px);
       position: fixed;
       top: 60px;
       left: 0;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid #2d3f50;
       display: flex;
       justify-content: center;
       align-items: start;
       padding-top: 20px;
     }
-
     .logout-btn {
-      background-color: #d9534f;
+      background: linear-gradient(135deg, #ff6b6b, #c62828);
       color: white;
       border: none;
       padding: 8px 16px;
-      border-radius: 4px;
+      border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      transition: opacity 0.2s;
     }
-
     .logout-btn:hover {
-      background-color: #c9302c;
+      opacity: 0.9;
     }
   `]
 })
